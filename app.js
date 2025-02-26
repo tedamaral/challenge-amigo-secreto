@@ -5,21 +5,29 @@ function adicionarAmigo() {
     let nome = document.querySelector('input').value;
     if (nome == '') {
         alert('Nome inválido');
-        limpaNome()
-        return;
     }
-
-    if (listaDeAmigos.includes(nome)) {
+    else if (listaDeAmigos.includes(nome)) {
         alert('Nome já adicionado');
-        limpaNome()
-        return;
     }
-    listaDeAmigos.push(nome);
+    else{
+        listaDeAmigos.push(nome);
+    }    
     console.log(listaDeAmigos);
+    mostrarLista()
     limpaNome()
 }
 
 function limpaNome() {
     let campo = document.querySelector('input');
     campo.value = '';   
+}
+
+function mostrarLista() {
+    let lista = document.querySelector('ul');
+    lista.innerHTML = '';
+    for (let i = 0; i < listaDeAmigos.length; i++) {
+        let item = document.createElement('li');
+        item.textContent = listaDeAmigos[i];
+        lista.appendChild(item);
+    }
 }
